@@ -1,0 +1,35 @@
+#page{
+    text-align: center;
+    width: 600px;
+    margin: auto;
+}
+#tab{
+    margin: auto;
+}
+#ph{
+    float: left;
+    margin-left: 50px;
+    margin-top: 7px;
+}
+p{
+    margin: auto;
+}
+#tabldiv{
+    text-align: center;
+    width: auto;
+    margin: auto;
+    background-color:rgb(255, 255, 255);
+}
+table {
+    border-collapse: separate; 
+    border-spacing: 5em;
+  }
+header{
+    background-color: rgb(255, 255, 255);
+}
+body{
+    background-color: rgb(209, 209, 209);
+}
+h2{
+    margin: 0;
+}
