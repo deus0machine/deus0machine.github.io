@@ -38,12 +38,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 /*Code*/
 
-
 .header{
     text-align: center;
     font-size: 21px;
     background-color: black;
-    padding: 20px 80px;
+    padding: 250px 80px;
     line-height: 30px;
     color: whitesmoke;
 }
@@ -64,10 +63,6 @@ body{
 }
 
 h2{
-    font-size: 21px;
-}
-
-h3{
     font-size: 21px;
 }
 
@@ -102,17 +97,26 @@ nav ul{
 .showcase{
     display: flex;
     width: 20%;
+    height: auto;
     border: 3px solid black;
     padding-top: 30px;
-   
+    padding-left: 140px;
 }
 .content{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
+
 }
 
 #line{
     background-color: black;
+}
+#hardskills{
+    height: 30px;
+}
+#next{
+    background-color: aquamarine;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    padding-right: 0;
 }
