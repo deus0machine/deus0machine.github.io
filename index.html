@@ -5,33 +5,7 @@
     <link rel="stylesheet" href="cs.css">
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 </head>
-<script type="text/javascript">
-    function zero_first_format(value)
-    {
-        if (value < 10)
-        {
-            value='0'+value;
-        }
-        return value;
-    }
-    function date_time()
-    {
-        var current_datetime = new Date();
-        var day = zero_first_format(current_datetime.getDate());
-        var month = zero_first_format(current_datetime.getMonth()+1);
-        var year = current_datetime.getFullYear();
-        var hours = zero_first_format(current_datetime.getHours());
-        var minutes = zero_first_format(current_datetime.getMinutes());
-        var seconds = zero_first_format(current_datetime.getSeconds());
-
-        return day+"."+month+"."+year+" "+hours+":"+minutes+":"+seconds;
-    }
-    setInterval(function () {
-        document.getElementById('current_date_time_block2').innerHTML = date_time();
-    }, 1000);
-
-    document.getElementById('current_date_time_block').innerHTML = date_time();
-</script>
+<script src="js/functional.js"></script>
 
 <body>
 <form action="#" method="post" enctype="multipart/form-data">
@@ -62,14 +36,49 @@
                     channels and 1 educational organization. Motivated to improve
                     my skills and create top quality content.
                     I love to be creative.</p>
+                    <hr id = "line"width="100%" size="5">
+                <p> I have 2.5 years experience, I have worked with 3 YouTube
+                    channels and 1 educational organization. Motivated to improve
+                    my skills and create top quality content.
+                    I love to be creative.</p>
+                    <hr id = "line"width="100%" size="5">
+                <p> I have 2.5 years experience, I have worked with 3 YouTube
+                    channels and 1 educational organization. Motivated to improve
+                    my skills and create top quality content.
+                    I love to be creative.</p>
             </div>
         </article>
         <article class="showcase">
-            <h2 id="hardskills">Hard skills</h2>
+            <div class="info2">
+                <h2 id="hardskills"><b>Hard skills</b></h2>
+                <hr id = "line"width="100%" size="5">
+                <table>
+                    <tr>
+                        <th><img src="https://pnggallery.com/wp-content/uploads/html-logo-03.png" width="100" height="100"></th>
+                        <th>Html</th>
+                    </tr>
+                    
+                    <tr>
+                        <th><img src="https://cdn.coursehunter.net/category/c-sharp-c.png" width="90" height="100"></th>
+                        <th>C#</th>
+                    </tr>
+                    <tr>
+                        <th><img src="https://www.pngmart.com/files/22/PS-Logo-PNG-Pic.png" width="150" height="90"></th>
+                        <th>PS</th>
+                    </tr>
+                    <tr>
+                        <th><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgu3nIwzRfd-TTMwXfpxbkOExcxdojRfIJmlYzPH08oybvssQ8P6ULfoNNMbWvqamTFXDJh4IqWpn4vD463JyQoHzfez5OJOkT2cVjvsCrJJPWy2in_R2OgC5xghF2gXeEeF6R5iEdXI2tRRcI6Q0pHt0JhuBb5K9e6PkLhM9BPk1ZcUXGhP45DbaaF/s2830/a349ecfe9ee669325b7574b45db4d6d8.png" width="100" height="100"></th>
+                        <th>AI</th>
+                    </tr>
+                    <tr>
+                        <th><img src="https://orion42.net/wp-content/uploads/2019/05/git-logo.png" width="100" height="100"></th>
+                        <th>Git</th>
+                    </tr>
+                </table>
+            </div>
         </article>
     </section>
-    <article id="next">
-    </article>
+
 </form>
 </body>
 </html>
