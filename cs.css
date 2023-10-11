@@ -118,7 +118,7 @@
     .content
     {
         display: flex;
-
+        background-color: #fff;
     }
 
     #line
@@ -138,3 +138,41 @@
         border-collapse: separate; 
         border-spacing: 3em;
     }
+    #lefthead{
+        width: 100px;
+        height: 100px;
+        float: left;
+        color: black;
+        background-color: whitesmoke;
+    }
+    #righthead{
+        width: 100px;
+        height: 100px;
+        float: right;
+        color: black;
+        background-color: whitesmoke;
+    }
+    #cursor {
+        cursor: none;
+        --size: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999999999999;
+        height: var(--size);
+        width: var(--size);
+        background-color: #fff;
+        border-radius: 50%;
+        transform: translate3d(
+          calc(100vw * var(--cursor-x) - var(--size) / 2), 
+          calc(100vh * var(--cursor-y) - var(--size) / 2), 
+          0);
+        pointer-events: none;
+        mix-blend-mode: difference;
+      }
+      body{
+        cursor: none;
+      }
+      a:hover{
+        cursor: none;
+      }
