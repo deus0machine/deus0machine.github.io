@@ -73,3 +73,5 @@ class Cursor {
 }
 
 new Cursor();
+
+hs.graphicsDir = 'css/graphics/';
