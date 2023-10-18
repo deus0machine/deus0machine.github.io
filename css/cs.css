@@ -177,7 +177,8 @@
         mix-blend-mode: difference;
     }
     body{
-    cursor: none;
+        cursor: none;
+        overflow-x:hidden;
     }
     a:hover{
     cursor: none;
@@ -187,10 +188,21 @@
     width: 100%;
     height: 450px;
     overflow: hidden;
-    
     }
     #git{
         margin: 10px;   
         border-collapse: separate;
         border-spacing: 150px 0px;
+    }
+    #info{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    html::-webkit-scrollbar {
+        display: none;
+    }
+    #headOfHead{
+        color: rgba(255, 255, 255, 0.1);
+        background-color: black;
+        text-align: center;
     }
