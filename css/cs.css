@@ -136,6 +136,9 @@
     {
         border-collapse: separate; 
         border-spacing: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .bothhead{
         width: 100px;
