@@ -132,6 +132,7 @@
         text-align: center;
         margin-top: 10px;
     }
+    
     table 
     {
         border-collapse: separate; 
@@ -162,6 +163,7 @@
         0 0 1em rgb(0, 0, 0), 
         0 0 2em rgb(255, 255, 255);
         border: 3px solid rgb(255, 255, 255);
+        z-index: 9999999999;
     }
     #lefthead{
         float: left;
@@ -187,6 +189,17 @@
         pointer-events: none;
         mix-blend-mode: difference;
     }
+    .dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 80%;
+        box-shadow: 0 0 2px #ffffff; 
+        background-color: #ffffff;
+        z-index: 99999999999999;
+        mix-blend-mode: difference;
+        position: absolute;
+        pointer-events: none;
+      }
     body{
         cursor: none;
         overflow-x:hidden;
