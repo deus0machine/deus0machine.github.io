@@ -165,6 +165,7 @@
         border: 3px solid rgb(255, 255, 255);
         z-index: 9999999999;
     }
+
     #lefthead{
         float: left;
     }
@@ -180,29 +181,48 @@
         z-index: 99999999999999;
         height: var(--size);
         width: var(--size);
-        background-color: #fff;
+        background-color: #000000;
+        border: 2px solid #000;
         border-radius: 50%;
         transform: translate3d(
           calc(100vw * var(--cursor-x) - var(--size) / 2), 
           calc(100vh * var(--cursor-y) - var(--size) / 2), 
           0);
         pointer-events: none;
-        mix-blend-mode: difference;
+        /* mix-blend-mode: difference; */
     }
     .dot {
         width: 20px;
         height: 20px;
         border-radius: 80%;
-        box-shadow: 0 0 2px #ffffff; 
+        /* box-shadow: 0 0 2px #000000;  */
         background-color: #ffffff;
+         /* border: 1px solid #000;   */
         z-index: 99999999999999;
-        mix-blend-mode: difference;
+        /* mix-blend-mode: difference; */
         position: absolute;
         pointer-events: none;
       }
+      .dot1 {
+        width: 20px;
+        height: 20px;
+        border-radius: 80%;
+        /* box-shadow: 0 0 2px #000000;  */
+        background-color: #000000;
+         /* border: 1px solid #000;   */
+        z-index: 99999999999999;
+        /* mix-blend-mode: difference; */
+        position: absolute;
+        pointer-events: none;
+      }  
     body{
         cursor: none;
         overflow-x:hidden;
+    }
+    body.hovered #cursor {
+        background-color: #ffffff;
+        box-shadow: 0 0 2px #ffffff; 
+        border: 1px solid #fff; 
     }
     a:hover{
     cursor: none;
@@ -227,3 +247,5 @@
         background-color: black;
         text-align: center;
     }
+
+    

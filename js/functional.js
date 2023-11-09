@@ -23,6 +23,9 @@ function date_time()
 const inTimer = () => {
     document.getElementById('current_date_time_block2').innerHTML = date_time();
 }
+var colorDot = 0;
+document.querySelector('.header').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1})
+document.querySelector('.header').addEventListener('mouseout', () => {document.querySelector('body').classList.remove('hovered'); colorDot = 0})
 
 inTimer();
 setInterval(inTimer, 1000);
@@ -34,7 +37,7 @@ class Cursor {
     // config
     this.target = { x: 0.5, y: 0.5 }; // mouse position
     this.cursor = { x: 0.5, y: 0.5 }; // cursor position
-    this.speed = 0.15;
+    this.speed = 0.35;
     this.init();
   }
   bindAll() {
@@ -98,7 +101,10 @@ new Cursor();
 
     // Add a dot to follow the cursor
     dot = document.createElement('div');
+    if(colorDot == 1)
     dot.className = "dot";
+    else
+    dot.className = "dot1";
     dot.style.left = event.pageX -10 + "px";
     dot.style.top = event.pageY -10+ "px";
     document.body.appendChild(dot);
