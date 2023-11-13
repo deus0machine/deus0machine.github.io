@@ -1,4 +1,4 @@
-
+hs.graphicsDir = 'css/graphics/';
 function zero_first_format(value)
     {
         if (value < 10)
@@ -9,26 +9,25 @@ function zero_first_format(value)
     }
 function date_time()
     {
-        var current_datetime = new Date();
-        var day = zero_first_format(current_datetime.getDate());
-        var month = zero_first_format(current_datetime.getMonth()+1);
-        var year = current_datetime.getFullYear();
-        var hours = zero_first_format(current_datetime.getHours());
-        var minutes = zero_first_format(current_datetime.getMinutes());
-        var seconds = zero_first_format(current_datetime.getSeconds());
+        let current_datetime = new Date();
+        let day = zero_first_format(current_datetime.getDate());
+        let month = zero_first_format(current_datetime.getMonth()+1);
+        let year = current_datetime.getFullYear();
+        let hours = zero_first_format(current_datetime.getHours());
+        let minutes = zero_first_format(current_datetime.getMinutes());
+        let seconds = zero_first_format(current_datetime.getSeconds());
 
         return day+"."+month+"."+year+" "+hours+":"+minutes+":"+seconds;
     }
-
 const inTimer = () => {
     document.getElementById('current_date_time_block2').innerHTML = date_time();
 }
-var colorDot = 0;
-document.querySelector('.header').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1})
-document.querySelector('.header').addEventListener('mouseout', () => {document.querySelector('body').classList.remove('hovered'); colorDot = 0})
-
 inTimer();
 setInterval(inTimer, 1000);
+let colorDot = 0;
+document.querySelector('.header').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1; console.log("Inside")})
+document.querySelector('.header').addEventListener('mouseout', () => {document.querySelector('body').classList.remove('hovered'); colorDot = 0; console.log("Out")})
+//document.querySelector('#contPopup').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1; console.log("Inside")})
     
 const lerp = (a, b, n) => (1 - n) * a + n * b;
 
@@ -75,7 +74,6 @@ class Cursor {
     this.raf = requestAnimationFrame(this.render);
   }
 }
-
 new Cursor();
 
 (function() {
@@ -83,7 +81,7 @@ new Cursor();
 
   document.onmousemove = handleMouseMove;
   function handleMouseMove(event) {
-    var dot, eventDoc, doc, body, pageX, pageY;
+    let dot, eventDoc, doc, body, pageX, pageY;
     
     event = event || window.event; // IE-ism
     if (event.pageX == null && event.clientX != null) {
@@ -114,4 +112,31 @@ new Cursor();
   }
 })();
 
-hs.graphicsDir = 'css/graphics/';
+// Open popup function
+function openPopup() {
+  const popupContainer = document.getElementById("contPopup");
+  popupContainer.style.opacity = 1;
+  popupContainer.style.visibility = "visible";
+  document.getElementById("cursor").style.backgroundColor = "#ffffff";
+  document.querySelector('body').style.position = "fixed";
+}
+
+// Close popup function
+function closePopup() {
+  const popupContainer = document.getElementById("contPopup");
+  popupContainer.style.opacity = 0;
+  popupContainer.style.visibility = "hidden";
+  document.querySelector('body').style.position = "static";
+}
+document.getElementById("popup").addEventListener('click', {
+  handleEvent(event) {
+    console.log("clickOnPopup");
+    event.stopPropagation();
+  }
+});
+document.getElementById("contPopup").addEventListener('click', {
+  handleEvent(event) {
+    console.log("clickOutsidePopup");
+    closePopup();
+  }
+});
