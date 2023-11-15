@@ -27,7 +27,9 @@ setInterval(inTimer, 1000);
 let colorDot = 0;
 document.querySelector('.header').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1; console.log("Inside")})
 document.querySelector('.header').addEventListener('mouseout', () => {document.querySelector('body').classList.remove('hovered'); colorDot = 0; console.log("Out")})
-//document.querySelector('#contPopup').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1; console.log("Inside")})
+if (document.querySelector('#contPopup') !== null){
+  document.querySelector('#contPopup').addEventListener('mouseover', () => {document.querySelector('body').classList.add('hovered'); colorDot = 1; console.log("Inside")})
+}
     
 const lerp = (a, b, n) => (1 - n) * a + n * b;
 

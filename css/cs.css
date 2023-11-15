@@ -288,6 +288,7 @@
         color: white;
         top: 50%;
         left: 50%;
+        align-content: center;
         transform: translate(-50%, -50%);
         background-color: rgb(0, 0, 0);
         padding: 20px;
@@ -295,17 +296,17 @@
         z-index:100;
       }
       /* Close button styles */
-      #popup .popup-content button {
-        float: right;
-      }
-      .popup-content{
-        z-index:2;
-      }
-      .overlay {
-        z-index:1;
-        background-color: #00000073;
-        box-shadow: 0px 0px 0px 
-        9999px rgba(0, 0, 0, 0.5);
+    #popup .popup-content button {
+    float: right;
+    }
+    .popup-content{
+    z-index:2;
+    margin: 10px;
+    }
+    .sign-elem{
+    width: auto;
+    height:auto;
+    padding: 10px;
     }
     .popup-contener{
             z-index: 99999999;

@@ -14,15 +14,18 @@
             <div class="popup-content">
               <h2>Авторизация</h2>
               <form action="submit.php" method="post">
-                <label for="name">Login:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <input type="submit" value="Submit">
+                <div id="loginSignField" class="signElem">
+                    <input type="text" id="name" name="name" placeholder="Login" required>
+                </div>
+                <div id="passwordSignField" class="signElem">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div align = "center" id="buttonSignField" class="signElem">
+                    <input type="submit" value="Войти">
+                </div>
               </form>
               <button onclick="closePopup()">Close</button>
             </div>
-            <div class="overlay"></div>
           </div>
     </div>
     
