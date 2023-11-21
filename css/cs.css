@@ -260,7 +260,7 @@
         width: 600px;
         height: 800px;
         color: #fff;
-        background: linear-gradient(blue, red);
+        background-color: #000;
     }
     #autorization{
         position: absolute;
@@ -294,19 +294,14 @@
         padding: 20px;
         border: 3px solid rgb(255, 255, 255);
         z-index:100;
-      }
+    }
       /* Close button styles */
     #popup .popup-content button {
-    float: right;
+        position: relative;
+        float: right;
     }
     .popup-content{
     z-index:2;
-    margin: 10px;
-    }
-    .sign-elem{
-    width: auto;
-    height:auto;
-    padding: 10px;
     }
     .popup-contener{
             z-index: 99999999;
@@ -320,4 +315,47 @@
             visibility: hidden;
             opacity: 0;
     }
-    
+    .popup-content input{
+        margin: 5px;
+        padding-left: 3px;
+        height:24px;
+        font-size: 15px;
+    }
+    .popup-content input[type=submit]{
+        width: 60px;
+        background-color: whitesmoke;
+        text-align: center;
+        line-height: 25px; 
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .popup-content input[type=submit]:hover{
+        background-color: black;
+        color: whitesmoke;
+        border: 3px solid rgb(255, 255, 255);
+        width: 65px;
+        height:30px;
+    }
+    #mdiv {
+        width: 20px;
+        height: 20px;
+        background-color: rgb(255, 255, 255);
+    }
+    #mdiv :hover{
+        background-color: rgb(221, 0, 0);
+    }
+    .mdiv {
+        height: 20px;
+        width: 2px;
+        margin-left: 9px;
+        background-color: black;
+        transform: rotate(45deg);
+        Z-index: 1;
+    }
+    .md {
+        height: 20px;
+        width: 2px;
+        background-color: black;
+        transform: rotate(90deg);
+        Z-index: 2;
+    }
