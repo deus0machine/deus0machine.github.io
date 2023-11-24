@@ -10,6 +10,7 @@
     <link href="css/highslide.css" rel="stylesheet" property="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
 
@@ -70,6 +71,35 @@
             asdasdsd
         </div>
     </article>
+    <article style="width: 100%;">
+        <div class="container my-3"> 
+            <h1>Заметки, комментарии и отзывы</h1> 
+            <hr class="hrBlog"> 
+            <div id="notes" class= "row container-fluid"> 
+            </div> 
+            <hr class="hrBlog">  
+            <?php
+            if ($_SESSION['user'])
+            echo '<h1>Пишите здесь</h1> 
+                 <div class="card"> 
+                <div class="card-body"> 
+                    <p class="card-title"> 
+                         Добавить от имени "_____"
+                    </p> 
+                    <div class="form-group"> 
+                        <textarea class="form-control"
+                            id="addTxt" rows="3"></textarea> 
+                    </div> 
+                    <button class="btn btn-primary" id="addBtn"> 
+                        <b>Add Note</b> 
+                    </button> 
+                </div> 
+            </div> ';
+            else echo '<h1>Авторизуйтесь чтобы оставлять сообщения...</h1>'
+            ?>
+        </div> 
+    </article>
+        <script src="js/blog.js"></script> 
 </section>
 
 
