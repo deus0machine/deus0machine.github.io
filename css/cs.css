@@ -478,3 +478,30 @@
         height: 0;
         overflow: visible;
     }
+
+    .blockNews{
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        float: right;
+    }
+    .blockNews p{
+        padding: 10px;
+    }
+    .newsPic img{
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    .newsPic{
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+    .news-container2{
+        width: 100%;
+    }
+    .newsContent2{
+        width: 95%;
+        text-align: center;
+    }

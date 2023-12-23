@@ -111,9 +111,9 @@
                     $sql = "SELECT * FROM notes";
                     $result = $dsf->select($sql);
                     foreach($result as $note){
-                            echo '<div class="noteCard my-2 mx-2 card" style="width: 18rem;">';
+                            echo '<div class="noteCard my-2 mx-2 card" style="width: 24rem;">';
                             echo '<div class="card-body">';
-                            echo '<h5 class="card-title">Note by ' . $note["head"] . '</h5>';
+                            echo '<h5 class="card-title">Note by <b>' . $note["head"] . '</b> ' . $note["date"] . '</h5>';
                             echo '<p class="card-text">' . $note["body"] . '</p>';
                             if($_SESSION['user']['login'] == 'admin')
                             echo '<button id="' . $note["id"] . '" onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>';

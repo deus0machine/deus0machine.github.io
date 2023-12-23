@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +27,34 @@
         </ul>
     </nav>
 </div>
+<section class="content">
+    <article style="width: 100%;" id="news-container2">
+    
+    </article>
+</section>
+
+<script>
+let url = 'https://newsdata.io/api/1/news?country=ru&apikey=pub_3530424e8a7a997f40539cda9a049eacdcf50';
+
+let news = fetch(url)
+.then(response => response.json())
+      .then(json => displayNews(json));
+
+function displayNews(newsData) {
+  let newsContainer = document.getElementById('news-container2');  
+  newsData.results.forEach(function(newsItem) {
+    let newsElement = document.createElement('div');
+    newsElement.className = 'blockNews';
+    if (newsItem.image_url != null)
+    newsElement.innerHTML = '<div class="newsPic"><img src="'+ newsItem.image_url+'"></img></div><div class = "newsContent2"><h1>' 
+ + newsItem.title + '</h1><h3>' + newsItem.content + '</h3><h2>'+newsItem.pubDate+'</h2></div>';
+    else
+    newsElement.innerHTML = '<div class = "newsContent2"><h1>'
+ + newsItem.title + '</h1><h3>' + newsItem.content + '</h3><h2>'+newsItem.pubDate+'</h2></div>';
+    newsContainer.appendChild(newsElement);
+  });
+}
+</script>
 
 <script src="js/highslide.js" type="text/javascript"></script>
 <script src="js/functional.js"></script>
