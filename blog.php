@@ -9,7 +9,8 @@
         $check_user = $dsf->select("SELECT * FROM `users` where login = '$login' and password ='$password';");
         if (count($check_user) > 0){
             $user = $check_user[0];
-            $_SESSION['user'] = ["login" => $user['login']];
+            //$_SESSION['user'] = ["login" => $user['login']];
+            setcookie('user', $user['login'], time() + (86400 * 30), '/');
         }
         else{
             $_SESSION['message'] = 'Неверные данные';
@@ -75,10 +76,15 @@
     <div id="headOfHead"><h1><b>Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_Блог_</b></h1></div>
     <div class="header">
         <?php
-        if (!$_SESSION['user']) 
-        echo '<button onclick="openPopup()" id="autorization">Авторизация</button>';
-        else
-        echo '<a href ="php/logout.php"><button id="autorization">Выйти</button></a>';
+        // if (!$_SESSION['user']) 
+        // echo '<button onclick="openPopup()" id="autorization">Авторизация</button>';
+        // else
+        // echo '<a href ="php/logout.php"><button id="autorization">Выйти</button></a>';
+        if (isset($_COOKIE['user'])){
+            echo '<a href ="php/logout.php"><button id="autorization">Выйти</button></a>';
+        } else {
+            echo '<button onclick="openPopup()" id="autorization">Авторизация</button>';
+        }
         ?>
         <a style="color:#000" href="news.html"><div id = "lefthead" class="bothhead"><b>Новости</b></div></a>
         <a style="color:#000" href="index.html"><div id = "righthead" class="bothhead"><b>Главная</b></div></a>
@@ -115,8 +121,12 @@
                             echo '<div class="card-body">';
                             echo '<h5 class="card-title">Note by <b>' . $note["head"] . '</b> ' . $note["date"] . '</h5>';
                             echo '<p class="card-text">' . $note["body"] . '</p>';
-                            if($_SESSION['user']['login'] == 'admin')
-                            echo '<button id="' . $note["id"] . '" onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>';
+                            //if($_SESSION['user']['login'] == 'admin')
+                            if (isset($_COOKIE['user']) && $_COOKIE['user'] == 'admin')
+                            {
+                                echo '<button id="' . $note["id"] . '" onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>';
+                            }
+                            
                             echo '</div>';
                             echo '</div>';
                         }
@@ -124,13 +134,15 @@
             </div> 
             <hr class="hrBlog">  
             <?php
-            if ($_SESSION['user']){
+            //if ($_SESSION['user']){
+            if (isset($_COOKIE['user'])){
             echo '<h1>Пишите здесь</h1> 
                  <div class="card"> 
                 <div class="card-body"> 
                     <p class="card-title"> 
                          Добавить от имени <b id="author">';
-                        print $_SESSION['user']['login'];
+                        //print $_SESSION['user']['login'];
+                        print $_COOKIE['user'];
             echo '</b></p> 
                     <div class="form-group"> 
                         <textarea name="comment" class="form-control"
@@ -145,10 +157,30 @@
             ?>
         </div> 
     </article>
-        <!--<script src="js/blog.js"></script> --> 
+
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 <script>
+    function checkAdmin() {
+        return (typeof Cookies.get('user') !== 'undefined' && Cookies.get('user') === 'admin');
+    }
+    function displayNotes(notes) {
+        $('#notes').empty(); 
+        for (var i = 0; i < notes.length; i++) {
+            var note = notes[i];
+            var noteHtml = '<div class="noteCard my-2 mx-2 card" style="width: 24rem;">' +
+                '<div class="card-body">' +
+                '<h5 class="card-title">Note by <b>' + note["head"] + '</b> ' + note["date"] + '</h5>' +
+                '<p class="card-text">' + note["body"] + '</p>';
+            if (checkAdmin()) {
+                noteHtml += '<button id="' + note["id"] + '" onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>';
+            }
+            noteHtml += '</div></div>';
+            $('#notes').append(noteHtml);
+        }
+    }
+
     function deleteNote(id) {
         $.ajax({
             type: "POST",
@@ -156,12 +188,25 @@
             data: { noteId: id },
             success: function(response) {
                 alert(response);
+
+                $.ajax({
+                    url: 'php/get_notes.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        displayNotes(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error occurred while fetching notes:', error);
+                        console.log(xhr.responseText); 
+                }});
             },
             error: function(xhr, status, error) {
                 alert('Error occurred while deleting note');
             }
         });
     }
+
     function addNote() {
         var noteText = $('#addTxt').val(); 
         var author = $('#author').text();
@@ -171,14 +216,27 @@
             data: { noteText: noteText , author : author},
             success: function(response) {
                 alert(response); 
+
+                $.ajax({
+                    url: 'php/get_notes.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        displayNotes(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error occurred while fetching notes:', error);
+                        console.log(xhr.responseText); 
+                }});
             },
             error: function(xhr, status, error) {
                 alert('Error occurred while adding note');
             }
-        });
-    }
+        }
+        );
+        
+    };
 </script>
-
 <script src="js/highslide.js" type="text/javascript"></script>
 <script src="js/functional.js"></script>
 </body>
