@@ -314,7 +314,7 @@
     <script>
         // Генерация огней
         const body = document.body;
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 20; i++) {
             const light = document.createElement('div');
             light.classList.add('light');
             light.style.top = Math.random() * 100 + 'vh';
@@ -353,6 +353,10 @@
             }, 5000);
         };
         setInterval(createSnowflake, 100);
+        if (window.innerWidth < 768) { // Для устройств с шириной экрана < 768px
+            setInterval(createFirework, 2000); // Уменьши частоту фейерверков
+            setInterval(createSnowflake, 500); // Уменьши частоту снежинок
+        }
     </script>
 </body>
 </html>
