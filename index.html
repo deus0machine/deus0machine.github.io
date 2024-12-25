@@ -39,7 +39,46 @@
             font-size: 1.2em;
             opacity: 0.8;
         }
-
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+                max-width: 90%;
+            }
+        
+            h1 {
+                font-size: 2em;
+            }
+        
+            p {
+                font-size: 1em;
+            }
+        
+            .moving-image {
+                width: 300px;
+                height: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 10px auto;
+                max-width: 95%;
+            }
+        
+            h1 {
+                font-size: 1.5em;
+            }
+        
+            p {
+                font-size: 0.9em;
+            }
+        
+            .moving-image {
+                display: none; /* Можно скрыть на очень маленьких экранах */
+            }
+        }
         /* Анимация контейнера */
         @keyframes pulse {
             0%, 100% {
