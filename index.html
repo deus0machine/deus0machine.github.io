@@ -46,7 +46,12 @@
         .light, .firework, .snowflake {
             display: none; /* По умолчанию скрываем */
         }
-
+        @media (max-width: 768px) {
+            body {
+                background-size: contain; /* Подгоняет изображение полностью в границы экрана */
+                background-attachment: scroll; /* Убирает фиксирование для плавной прокрутки */
+            }
+        }
         @media (min-width: 768px) {
             .light, .firework, .snowflake {
                 display: block; /* Включаем эффекты только для десктопа */
