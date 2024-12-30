@@ -10,290 +10,96 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
-            background: url('background.jpg') ;
+            background: url('background.jpg');
             text-align: center;
         }
+
         .container {
             position: relative;
             z-index: 10;
-            padding: 30px;
+            padding: 20px;
             background: rgba(0, 0, 0, 0.8);
             border-radius: 20px;
             display: inline-block;
-            margin: 50px auto;
+            margin: 30px auto;
             color: #fff;
-            animation: pulse 2s infinite;
         }
+
         h1 {
-            font-size: 4em;
+            font-size: 3em;
             color: #ffe400;
-            text-shadow: 0 0 20px #ff6700, 0 0 30px #ff4500;
-            margin: 20px 0;
+            text-shadow: 0 0 15px #ff6700, 0 0 25px #ff4500;
+            margin: 15px 0;
         }
-        h2, p {
+
+        p {
             margin: 10px 0;
             color: #ffe7ba;
         }
+
         .footer {
-            margin-top: 30px;
-            font-size: 1.2em;
+            margin-top: 20px;
+            font-size: 1em;
             opacity: 0.8;
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 20px auto;
-                max-width: 90%;
-            }
-        
-            h1 {
-                font-size: 2em;
-            }
-        
-            p {
-                font-size: 1em;
-            }
-        
-            .moving-image {
-                width: 300px;
-                height: auto;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-                margin: 10px auto;
-                max-width: 95%;
-            }
-        
-            h1 {
-                font-size: 1.5em;
-            }
-        
-            p {
-                font-size: 0.9em;
-            }
-        
-            .moving-image {
-                display: none; /* Можно скрыть на очень маленьких экранах */
-            }
-        }
-        /* Анимация контейнера */
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 20px #ff6700;
-            }
-            50% {
-                box-shadow: 0 0 50px #ff4500;
-            }
+
+        .light, .firework, .snowflake {
+            display: none; /* По умолчанию скрываем */
         }
 
-        /* Разноцветные огни */
-        .light {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
-            border-radius: 50%;
-            animation: blink 3s infinite, changeColor 5s infinite;
-        }
-
-
-        @keyframes blink {
-            0%, 100% {
-                opacity: 0.2;
-                transform: scale(1);
+        @media (min-width: 768px) {
+            .light, .firework, .snowflake {
+                display: block; /* Включаем эффекты только для десктопа */
             }
-            50% {
-                opacity: 1;
-                transform: scale(1.5);
-            }
-        }
-        @keyframes changeColor {
-            0% { background: radial-gradient(circle, #ff0000, transparent); }
-            25% { background: radial-gradient(circle, #00ff00, transparent); }
-            50% { background: radial-gradient(circle, #0000ff, transparent); }
-            75% { background: radial-gradient(circle, #ffff00, transparent); }
-            100% { background: radial-gradient(circle, #ff0000, transparent); }
-        }
 
-        /* Фейерверк */
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: radial-gradient(circle, #fff, transparent);
-            border-radius: 50%;
-            animation: explode 2s ease-out infinite;
-        }
-        @keyframes explode {
-            0% { transform: scale(0); opacity: 1; }
-            50% { transform: scale(5); opacity: 0.8; }
-            100% { transform: scale(10); opacity: 0; }
-        }
-
-        /* Снежинки */
-        .snowflake {
-            position: fixed;
-            top: -10%;
-            font-size: 1.2em;
-            color: #fff;
-            user-select: none;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            from {
-                transform: translateY(-10%) rotate(0deg);
+            /* Огни */
+            .light {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
+                border-radius: 50%;
+                animation: blink 3s infinite, changeColor 5s infinite;
             }
-            to {
-                transform: translateY(110vh) rotate(360deg);
+
+            @keyframes blink {
+                0%, 100% {
+                    opacity: 0.2;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.5);
+                }
+            }
+
+            @keyframes changeColor {
+                0% { background: radial-gradient(circle, #ff0000, transparent); }
+                25% { background: radial-gradient(circle, #00ff00, transparent); }
+                50% { background: radial-gradient(circle, #0000ff, transparent); }
+                75% { background: radial-gradient(circle, #ffff00, transparent); }
+                100% { background: radial-gradient(circle, #ff0000, transparent); }
+            }
+
+            /* Снежинки */
+            .snowflake {
+                position: fixed;
+                top: -10%;
+                font-size: 1.2em;
+                color: #fff;
+                user-select: none;
+                animation: fall linear infinite;
+            }
+
+            @keyframes fall {
+                from {
+                    transform: translateY(-10%) rotate(0deg);
+                }
+                to {
+                    transform: translateY(110vh) rotate(360deg);
+                }
             }
         }
-
-        /* Картинка снизу */
-        .moving-image {
-            position: fixed;
-            bottom: 20px;
-            width: 500px;
-            height: 200px;
-            animation: move 10s linear infinite;
-        }
-        @keyframes move {
-            from {
-                left: -800px;
-            }
-            to {
-                left: 110vw;
-            }
-        }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Lobster', cursive;
-    color: #fff;
-    text-align: center;
-    overflow-x: hidden;
-    position: relative;
-}
-
-
-
-.container {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    margin: 40px auto;
-    max-width: 700px;
-    overflow: hidden;
-    animation: float 5s ease-in-out infinite;
-}
-
-.container h1 {
-    font-size: 3em;
-    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 30px #ff8800;
-    margin-bottom: 20px;
-    color: #ff3366; /* Новый цвет для h1 */
-    animation: glow 1.5s alternate infinite;
-}
-
-
-.container p {
-    font-size: 1.5em;
-    line-height: 1.8;
-    color: #ffee88; /* Новый цвет для p */
-    margin: 10px 0;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-}
-
-.footer {
-    font-size: 1.3em;
-    color: #ffe680; /* Новый цвет для footer */
-    font-style: italic;
-    margin-top: 30px;
-    text-shadow: 0 0 5px #ffe680, 0 0 10px #ffcc00, 0 0 20px #ffaa00;
-    animation: flicker 3s infinite, glow 1.5s infinite alternate;
-}
-
-/* Эффект мерцания */
-@keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-    }
-    20%, 24%, 55% {
-        opacity: 0.6;
-    }
-}
-
-/* Эффект пульсирующего свечения */
-@keyframes glow {
-    0% {
-        text-shadow: 0 0 5px #ffe680, 0 0 10px #ffcc00, 0 0 20px #ffaa00;
-    }
-    100% {
-        text-shadow: 0 0 15px #ffcc00, 0 0 30px #ffaa00, 0 0 50px #ff8800;
-    }
-}
-
-/* Анимация: Парящие снежинки */
-.container::before, .container::after {
-    content: '';
-    position: absolute;
-    top: -50px;
-    width: 100%;
-    height: 100%;
-    background: url('https://cdn.pixabay.com/photo/2017/11/07/15/40/snowflake-2926007_1280.png');
-    background-size: 50px;
-    opacity: 0.5;
-    animation: snow 10s linear infinite;
-}
-
-.container::after {
-    top: auto;
-    bottom: -50px;
-    animation: snow 15s linear infinite reverse;
-}
-
-/* Ключевые кадры */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(200px);
-    }
-}
-
-@keyframes glow {
-    0% {
-        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 30px #ff8800;
-    }
-    100% {
-        text-shadow: 0 0 20px #ffaa00, 0 0 30px #ffcc00, 0 0 40px #ff5500;
-    }
-}
-
-@keyframes snow {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 0 200%;
-    }
-}
-
-@keyframes flicker {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-}
     </style>
 </head>
 <body>
@@ -310,52 +116,60 @@
         <p class="footer">✨Приходи уёба ✨</p>
         <p class="footer">)</p>
     </div>
-    <img src="sports-sportsmanias.gif" alt="Двигающаяся картинка" class="moving-image">
+
     <script>
-        // Генерация огней
-        const body = document.body;
-        for (let i = 0; i < 20; i++) {
-            const light = document.createElement('div');
-            light.classList.add('light');
-            light.style.top = Math.random() * 100 + 'vh';
-            light.style.left = Math.random() * 100 + 'vw';
-            light.style.animationDuration = Math.random() * 3 + 2 + 's';
-            body.appendChild(light);
+        if (window.innerWidth >= 768) {
+            // Генерация огней
+            const body = document.body;
+            for (let i = 0; i < 10; i++) {
+                const light = document.createElement('div');
+                light.classList.add('light');
+                light.style.top = Math.random() * 100 + 'vh';
+                light.style.left = Math.random() * 100 + 'vw';
+                light.style.animationDuration = Math.random() * 3 + 2 + 's';
+                body.appendChild(light);
+            }
+
+            // Генерация снежинок
+            const createSnowflake = () => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+                snowflake.innerText = '❄';
+                body.appendChild(snowflake);
+
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000);
+            };
+            setInterval(createSnowflake, 100);
         }
+        if (window.innerWidth >= 768) {
+            const gif = document.createElement('img');
+            gif.src = 'sports-sportsmanias.gif'; // Замени на путь к твоей гифке
+            gif.style.position = 'fixed';
+            gif.style.bottom = '20px'; // Высота от нижнего края экрана
+            gif.style.left = '0';
+            gif.style.width = '200px'; // Размер гифки
+            gif.style.height = '200px';
+            gif.style.animation = 'slideLeftToRight 5s linear infinite';
+            document.body.appendChild(gif);
 
-        // Генерация фейерверков
-        const createFirework = () => {
-            const firework = document.createElement('div');
-            firework.classList.add('firework');
-            firework.style.left = Math.random() * 100 + 'vw';
-            firework.style.top = Math.random() * 50 + 'vh';
-            firework.style.animationDuration = Math.random() * 2 + 1 + 's';
-            body.appendChild(firework);
-
-            setTimeout(() => {
-                firework.remove();
-            }, 2000);
-        };
-        setInterval(createFirework, 500);
-
-        // Генерация снежинок
-        const createSnowflake = () => {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            snowflake.innerText = '❄';
-            body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        };
-        setInterval(createSnowflake, 100);
-        if (window.innerWidth < 768) { // Для устройств с шириной экрана < 768px
-            setInterval(createFirework, 2000); // Уменьши частоту фейерверков
-            setInterval(createSnowflake, 500); // Уменьши частоту снежинок
+            // Анимация движения
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes slideLeftToRight {
+                    0% {
+                        left: -200px;
+                    }
+                    100% {
+                        left: 100%; /* Полностью проходит вправо */
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         }
     </script>
 </body>
